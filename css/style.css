@@ -303,6 +303,13 @@ a:hover {
 	font-weight: bold;
 }
 
+/* User */
+#user {
+
+
+
+}
+
 /* Sidebar */
 
 #sidebar {
@@ -462,6 +469,19 @@ a:hover {
 
 }
 
+#qbox-date{
+  font-family: Helvetica, Arial, sans-serif;
+	font-size: 10px;
+	font-style: italic;
+
+}
+
+#qbox-user{
+  font-family: Helvetica, Arial, sans-serif;
+	font-size: 10px;
+	font-style: italic;
+}
+
 /* ABox */
 #abox{
   width: 475px;
@@ -480,8 +500,23 @@ a:hover {
 #abox p{
   font-family: Helvetica, Arial, sans-serif;
 	font-size: 12px;
+}
+
+#abox-date{
+  font-family: Helvetica, Arial, sans-serif;
+	font-size: 10px;
+	font-style: italic;
+	color:#BEBDBE;
 
 }
+
+#abox-user{
+  font-family: Helvetica, Arial, sans-serif;
+	font-size: 10px;
+	font-style: italic;
+	color:#BEBDBE;
+}
+
 #abutton{
   margin-top:50px;
   width: 475px;
@@ -500,6 +535,11 @@ a:hover {
 	
 	font: normal 12px Arial, Helvetica, sans-serif;
 	color: #696969;
+}
+
+#table{
+  margin-left:200px;
+
 }
 
 /* Calendar */
