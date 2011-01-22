@@ -56,9 +56,6 @@ function validate(){
             </form>
             
       </div>
-      <div id = "help">
-        <p><a href = "help.html"> Help</a> | <a href = "help.html">Setting</a> </p>
-      </div>
       
   </div>
 </div>
@@ -92,7 +89,7 @@ function validate(){
   <br>
     <ul>
 	   							 {% for question in questions %}
-								 <li><a href="/qanda?id={{question.questionID}}"> {{ question.Title }}</a></li>
+								 <li><a href="/qanda?{{question.questionID}}"> {{ question.Title }}</a></li>
 								{% endfor %}
 							</ul>
   
