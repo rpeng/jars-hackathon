@@ -33,8 +33,13 @@ class MainPage(webapp.RequestHandler):
 
 class QuestionSubmit(webapp.RequestHandler):
     def post(self):
-        title = self.request.get('title')
-        question = self.request.get('question')
+        qData = Question()
+        
+        qData.Title = self.request.get('title')
+        qData.Question = self.request.get('question')
+        qData.put()
+        self.redirect("/qanda.html")
+        
     pass
         
 class QuestionPage(webapp.RequestHandler):
@@ -49,7 +54,11 @@ class AnswerPage(webapp.RequestHandler):
 
 class QnAPage(webapp.RequestHandler):
     def get(self):
-        template_values = {}
+        questions_query = Question.all()
+        questions = questions_query.fetch(5)
+        template_values = {
+            'questions': questions
+            }
         self.response.out.write(template.render('qanda.html',template_values))
 
 application = webapp.WSGIApplication(
