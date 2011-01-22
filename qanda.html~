@@ -88,15 +88,7 @@ function validate(){
 				</div>
   <div id = "content">
   <p><a href = "index.html">Home </a> > Q and A</p>
-  {% for question in questions %}
-  <div id = "qbox">
-	  <h1>{{ question.Title }}</h1>
-      <div id = "qbox-user">User</div>
-      <div id = "qbox-date">Date</div>
-      <br>
-      <p> question.Ques </p>
-  </div>
-  {% endfor %}
+
     <div id = "abox">
       <h1>Answer</h1>
       <div id = "abox-user">User</div>
