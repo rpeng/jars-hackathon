@@ -89,9 +89,9 @@ function validate(){
   
   <div id = "box">
 
-    <form name = "question" onsubmit="return validate()">
+    <form action = "/submitQuestion" onsubmit="return validate()" method = "post">
         
-              Title:<br> <input type="text" name="title" id="box-text" value="" method="post">
+              Title:<br> <input type="text" name="title" id="box-text" value="">
               <div style="clear: both;">&nbsp;</div>
 			
               Question: <br><textarea name="q" id="box-textarea" rows="10" cols="64"></textarea>

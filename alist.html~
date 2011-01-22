@@ -87,12 +87,12 @@ function validate(){
 					</ul>
 				</div>
   <div id = "content">
-  <p><a href = "index.html">Home</a> > Question List</p>
+  <p><a href = "index.html">Home</a> Question List</p>
   <h1>Questions:</h1>
   <br>
     <ul>
-	    							{% foreach question in questions %}
-								<li><a href="qanda.html"> {{ question.Title }}</a></li>
+	   							 {% for question in questions %}
+								 <li><a href="/qanda?id={{question.questionID}}"> {{ question.Title }}</a></li>
 								{% endfor %}
 							</ul>
   
