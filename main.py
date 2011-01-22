@@ -67,7 +67,7 @@ class AnswerSubmit(webapp.RequestHandler):
         aData.answerID = int(currentQuestion)
         aData.put()
                 
-        self.redirect("/qanda?"+str(aData.currentQuestion))
+        self.redirect("/qanda?"+str(currentQuestion))
 
         
 class QuestionPage(webapp.RequestHandler):
