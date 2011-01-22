@@ -27,15 +27,23 @@ Released   : 20101115
 <script type="text/javascript">
 
 function validate(){
-  var x=document.forms["q"]["s"].value
+  var x=document.forms["question"]["na"].value
+  var y = var x=document.forms["question"]["ema"].value
+  var z = document.forms["question"]["ans"].value
   if (x == ""){
-    alert ("You must fill in all of the required fields!")
+    alert ("You must fill in your name!")
   return false;
   }
-  else{
-    document.write(x);
-    return true;
+  else if( y == ""){
+    alert ("You must fill in your email!")
+    return false;
    }
+  else if (z ==""){
+    alert("You not fill in an answer");
+    return false;
+  }
+  else
+    return true;
 }
 
 </script>
