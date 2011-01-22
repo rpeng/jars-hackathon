@@ -69,12 +69,12 @@ function validate(){
 							click on the thought bubbles</p>
 						</li>
 						<li>
-							<h2>Menu</h2>
+							<h2>Categories</h2>
 							<ul>
                 <li> <b> Score: 0 </b></li>
 								<li><a href="index.html">Home</a></li>
 								<li><a href="question.html">Ask a Question</a></li>
-								<li><a href="alist.html">Question List</a></li>
+								<li><a href="alist.html">Recent Questions</a></li>
 								<li><a href="help.html">Help</a></li>
 
 							</ul>
@@ -84,15 +84,33 @@ function validate(){
 					</ul>
 				</div>
   <div id = "content">
-  <p><a href = "index.html">Home</a> Question List</p>
-  <h1>Questions:</h1>
+  <p><a href = "index.html">Home</a> > Help</p>
+  <h1>FAQs:</h1>
+  <br>
+  <h2>How do I ask a question?</h2>
   <br>
     <ul>
-	   							 {% for question in questions %}
-								 <li><a href="/qanda?{{question.questionID}}"> {{ question.Title }}</a></li>
-								{% endfor %}
+								<li>Click<b> I HAVE A QUESTION</b> on the home page.</li>
+                <li>Type in your question.</li>
+                <li>Add any details that will help people answer it.</li>
+                <li>Select the most relevant category for your question.</li>
+                <li>If the question looks okay to you, click Submit.</li>
 							</ul>
-  
+	<h2>How do I answer a question?</h2>
+	<br>
+    <ul>
+								<li>Go to any question in the Recent/Popular section or I CAN ANSWER section.</li>
+                <li>Enter your answer in the Answer field and click Submit.</li>
+							</ul>
+							
+	<h2>How does level system work?</h2>
+	<br>
+    <ul>
+								<li>Your current level is displayed on the home page and you can always check your score by clicking the level at home page.</li>
+                <li>By clicking level systems in the menu, you can view the score you need to proceed to the next level.</li>
+							</ul>
+  <br>
+  <img id = "table" src ="image/table.png"></img>
   </div>
   <div style="clear: both;">&nbsp;</div>
 			</div>
