@@ -1,11 +1,17 @@
 application: jarshack
-version: 1
+version: 2
 runtime: python
 api_version: 1
 
 handlers:
-- url: /stylesheets
-  static_dir: stylesheets
+
+- url: /css
+  static_dir: css
+  upload: css/.*
+
+- url: /image
+  static_dir: image
+  upload: images/.*
 
 - url: /.*
   script: main.py

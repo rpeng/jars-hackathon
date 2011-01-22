@@ -1,14 +1,14 @@
-application: jarshack
-version: 1
+application: jarsqna
+version: 2
 runtime: python
 api_version: 1
 
 handlers:
-- url: /css
-  static_dir: css
-
 - url: /image
   static_dir: image
+
+- url: /css
+  static_dir: css
 
 - url: /.*
   script: main.py
