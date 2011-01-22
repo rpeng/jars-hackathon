@@ -24,21 +24,7 @@ Released   : 20101115
 </style>
 </head>
 <body>
-<script type="text/javascript">
 
-function validate(){
-  var x=document.forms["q"]["s"].value
-  if (x == ""){
-    alert ("You must fill in all of the required fields!")
-  return false;
-  }
-  else{
-    document.write(x);
-    return true;
-   }
-}
-
-</script>
 <div id ="wrapper">
   <div id="header">
       <div id="logo">
@@ -93,25 +79,19 @@ function validate(){
       <br>
       <p> {{question}} </p>
   </div>
- 
+
+  {% for a in answers %}
     <div id = "abox">
       <h1>Answer</h1>
-      <div id = "abox-user">User</div>
-      <div id = "abox-date">Date</div>
+      <div id = "abox-user">{{ans.userName}} ({{ans.email}})</div>
+      <div id = "abox-date">{{ans.date}}</div>
       <br>
-      <p>Answer Goes Here!!!</p>
+      <p>{{ans.Ans}}</p>
     </div>
-    
-    <div id = "abox">
-      <h1>Answer2</h1>
-      <div id = "abox-user">User</div>
-      <div id = "abox-date">Date</div>
-      <br>
-      <p>Answer2 Goes Here!!!</p>
-    </div>
+  {% endfor %}
     <div id = "abutton">
        <p>Do you know the answer? Answer it!! </p>
-      <form name = "question" onsubmit="return validate()">
+       <form name = "question" action = "/submitAnswer?{{id}}">
               
               Name: <input type="text" name="na" id="box-text2" value="" method="post">
               <div style="clear: both;">&nbsp;</div>
