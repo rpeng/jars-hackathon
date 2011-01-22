@@ -96,8 +96,8 @@ function validate(){
 
   <div id = "qbox">
 	  <h1>{{title}}</h1>
-      <div id = "qbox-user">User</div>
-      <div id = "qbox-date">Date</div>
+      <div id = "qbox-user">{{user}} ({{email}})</div>
+      <div id = "qbox-date">{{date}}</div>
       <br>
       <p> {{question}} </p>
   </div>
@@ -112,7 +112,7 @@ function validate(){
     {% endfor %}
     <div id = "abutton">
        <p>Do you know the answer? Answer it!! </p>
-      <form name = "question" action = "/submitAnswer" onsubmit="return validate()">
+      <form name = "answer" onsubmit="return validate()" method = "post" action = "/submitQuestion">
               
               Name: <input type="text" name="na" id="box-text2" value="">
               <div style="clear: both;">&nbsp;</div>
