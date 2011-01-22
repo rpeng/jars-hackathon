@@ -35,7 +35,12 @@ class QuestionPage(webapp.RequestHandler):
     def get(self):
         template_values = {}
         self.response.out.write(template.render('question.html',template_values))
-        
+
+class AnswerPage(webapp.RequestHandler):
+    def get(self):
+        template_values = {}
+        self.response.out.write(template.render('alist.html',template_values))
+
 class QnAPage(webapp.RequestHandler):
     def get(self):
         template_values = {}
@@ -45,6 +50,7 @@ application = webapp.WSGIApplication(
                                      [
                                          
                                      ('/', MainPage),
+                                     ('/alist.html', AnswerPage),
                                      ('/index.html', MainPage),
                                      ('/question.html', QuestionPage),
                                      ('/qanda.html', QnAPage)
