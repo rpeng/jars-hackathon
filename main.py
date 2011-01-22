@@ -9,10 +9,6 @@ from google.appengine.ext import db
 
 globalID = 1000
 currentQuestion = ""
-
-class UserIdentity:
-    name = ""
-    protocol = ""
     
 class Question(db.Model):
 
@@ -69,9 +65,9 @@ class AnswerSubmit(webapp.RequestHandler):
         aData.userName = self.request.get('na')
         aData.email = self.request.get('ema')
         aData.answerID = int(currentQuestion)
-        
         aData.put()
-        self.redirect("/qanda?"+str(aData.answerID))
+                
+        self.redirect("/qanda?"+str(aData.currentQuestion))
 
         
 class QuestionPage(webapp.RequestHandler):
@@ -121,8 +117,8 @@ application = webapp.WSGIApplication(
                                      ('/index.html', MainPage),
                                      ('/question.html', QuestionPage),
                                      ('/qanda*', QnAPage),
+                                     ('/submitAnswer*',AnswerSubmit),
                                      ('/submitQuestion', QuestionSubmit),
-                                     ('/submitAnswer',AnswerSubmit),
                                      ('/help.html',HelpPage)
                                      ],
                         

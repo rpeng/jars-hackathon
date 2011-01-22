@@ -27,15 +27,23 @@ Released   : 20101115
 <script type="text/javascript">
 
 function validate(){
-  var x=document.forms["q"]["s"].value
+  var x=document.forms["question"]["na"].value
+  var y = var x=document.forms["question"]["ema"].value
+  var z = document.forms["question"]["ans"].value
   if (x == ""){
-    alert ("You must fill in all of the required fields!")
+    alert ("You must fill in your name!")
   return false;
   }
-  else{
-    document.write(x);
-    return true;
+  else if( y == ""){
+    alert ("You must fill in your email!")
+    return false;
    }
+  else if (z ==""){
+    alert("You not fill in an answer");
+    return false;
+  }
+  else
+    return true;
 }
 
 </script>
@@ -56,9 +64,6 @@ function validate(){
             </form>
             
       </div>
-      <div id = "help">
-        <p><a href = "help.html"> Help</a> | <a href = "help.html">Setting</a> </p>
-      </div>
       
   </div>
 </div>
@@ -72,11 +77,11 @@ function validate(){
 							click on the thought bubbles</p>
 						</li>
 						<li>
-							<h2>Categories</h2>
+							<h2>Menu</h2>
 							<ul>
                 <li> <b> Score: 0 </b></li>
 								<li><a href="index.html">Home</a></li>
-								<li><a href="question.html">Questions</a></li>
+								<li><a href="question.html">Ask a Question</a></li>
 								<li><a href="alist.html">Recent Questions</a></li>
 								<li><a href="help.html">Help</a></li>
 
@@ -90,27 +95,30 @@ function validate(){
   <p><a href = "index.html">Home </a> > Q and A</p>
 
   <div id = "qbox">
-	  <h1>Question Here</h1>
+	  <h1>{{title}}</h1>
       <div id = "qbox-user">User</div>
       <div id = "qbox-date">Date</div>
       <br>
-      <p> blahblah </p>
+      <p> {{question}} </p>
   </div>
-  {% for a in answers %}
+    {% for a in answers %}
     <div id = "abox">
       <h1>Answer</h1>
       <div id = "abox-user">{{a.userName}}</div>
-      <div id = "abox-date">{{a.date.strftime("%m/%d/%Y %H:%M")}}</div>
+      <div id = "abox-date">{{a.date}}</div>
       <br>
       <p>{{a.Ans}}</p>
     </div>
     {% endfor %}
-   
     <div id = "abutton">
        <p>Do you know the answer? Answer it!! </p>
-      <form name = "question" onsubmit="return validate()">
-			
-              <textarea name="q" id="abox-textarea" rows="10" cols="55"></textarea><img src = "image/abutton.png"></img>
+      <form name = "question" action = "/submitAnswer" onsubmit="return validate()">
+              
+              Name: <input type="text" name="na" id="box-text2" value="" method="post">
+              <div style="clear: both;">&nbsp;</div>
+              Email: <input type="text" name="ema" id="box-text2" value="" method="post">
+              <div style="clear: both;">&nbsp;</div>
+              <textarea name="ans" id="abox-textarea" rows="10" cols="55"></textarea><img src = "image/abutton.png"></img>
               
               <div style="clear: both;">&nbsp;</div>
               

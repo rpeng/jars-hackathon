@@ -112,11 +112,11 @@ function validate(){
     {% endfor %}
     <div id = "abutton">
        <p>Do you know the answer? Answer it!! </p>
-      <form name = "question" onsubmit="return validate()">
+      <form name = "question" action = "/submitAnswer" onsubmit="return validate()">
               
-              Name: <input type="text" name="na" id="box-text2" value="" method="post">
+              Name: <input type="text" name="na" id="box-text2" value="">
               <div style="clear: both;">&nbsp;</div>
-              Email: <input type="text" name="ema" id="box-text2" value="" method="post">
+              Email: <input type="text" name="ema" id="box-text2" value="">
               <div style="clear: both;">&nbsp;</div>
               <textarea name="ans" id="abox-textarea" rows="10" cols="55"></textarea><img src = "image/abutton.png"></img>
               
