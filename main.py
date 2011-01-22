@@ -85,6 +85,7 @@ class HelpPage(webapp.RequestHandler):
 class AnswerPage(webapp.RequestHandler):
     def get(self):
         questions_query = Question.all()
+        questions_query.order("-date")
         questions = questions_query.fetch(5)
         template_values = {
             'questions': questions
