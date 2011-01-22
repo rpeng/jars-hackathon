@@ -1,5 +1,6 @@
 import os
 import datetime
+import string
 
 from google.appengine.api import users
 from google.appengine.ext import webapp
@@ -81,9 +82,32 @@ class HelpPage(webapp.RequestHandler):
         self.response.out.write(template.render('help.html',template_values))
         
 class SearchResults(webapp.RequestHandler):
-    def get(self):
+    def post(self):
+        search = self.request.get('s')
+        results = db.GqlQuery("select * from Question")
         template_values = {}
         self.response.out.write(template.render('sresults.html',template_values))
+        for s in results:
+            lstring = string.lower(s.Title)
+            l2string = string.lower(s.Ques)
+            rstring = string.lower(search)
+            if (lstring.find(rstring) >= 0) or (l2string.find(rstring) >= 0):
+                self.response.out.write("<li><a href = \"/qanda?"+str(s.questionID)+"\">"+s.Title+"</a></li>")
+        self.response.out.write("""
+  </div>
+  <div style="clear: both;">&nbsp;</div>
+			</div>
+</div>				
+	<!-- end #page -->
+<div id="footer">
+	<p>Copyright (c) 2011. All rights reserved. Design by jars();</a>.</p>
+</div>
+
+<!-- end #footer -->
+</body>
+</html>
+""")
+            
 
 class AnswerPage(webapp.RequestHandler):
     def get(self):
@@ -125,7 +149,8 @@ application = webapp.WSGIApplication(
                                      ('/submitAnswer*',AnswerSubmit),
                                      ('/submitQuestion', QuestionSubmit),
                                      ('/help.html',HelpPage),
-                                     ('/sresults.html',SearchResults)
+                                     ('/sresults.html',SearchResults),
+                                     ('/submitSearch*',SearchResults)
                                      ],
                         
                                      debug=True)

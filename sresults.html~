@@ -88,4 +88,22 @@ function validate(){
   <h1>Search Results:</h1>
   <br>
   <ul>
+	  {% for s in result %}
+	  	{% if s.Title.find(term) != -1 %}
+		<li><a href = "/qanda?{{s.questionID}}"> {{s.Ques}}</a></li>
+		{% endif %}	
+	{% endfor %}
+							</ul>
+  
+  </div>
+  <div style="clear: both;">&nbsp;</div>
+			</div>
+</div>				
+	<!-- end #page -->
+<div id="footer">
+	<p>Copyright (c) 2011. All rights reserved. Design by jars();</a>.</p>
+</div>
 
+<!-- end #footer -->
+</body>
+</html>
