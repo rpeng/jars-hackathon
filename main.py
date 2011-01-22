@@ -33,7 +33,9 @@ class MainPage(webapp.RequestHandler):
 
 class QuestionSubmit(webapp.RequestHandler):
     def post(self):
-
+        title = self.request.get('title')
+        question = self.request.get('question')
+    pass
         
 class QuestionPage(webapp.RequestHandler):
     def get(self):
@@ -58,7 +60,7 @@ application = webapp.WSGIApplication(
                                      ('/index.html', MainPage),
                                      ('/question.html', QuestionPage),
                                      ('/qanda.html', QnAPage),
-                                     ('/submitQuestion.html', QuestionSubmit)
+                                     ('/submitQuestion', QuestionSubmit)
                                      ],
                         
                                      debug=True)
