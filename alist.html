@@ -46,9 +46,8 @@ function validate(){
 
       </div>
     
-
       <div id="search" >
-            <form name = "q" onsubmit="return validate()">
+            <form name = "look" onsubmit="return validate()" method = "post" action = "/submitSearch">
       
             <input type="text" name="s" id="search-text" value="" method="post">
             <input type="submit" id="search-submit" value="SEARCH" />
@@ -56,7 +55,6 @@ function validate(){
             </form>
             
       </div>
-      
   </div>
 </div>
 
