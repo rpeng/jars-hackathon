@@ -101,22 +101,15 @@ function validate(){
       <br>
       <p> {{question}} </p>
   </div>
- 
+    {% for a in answers %}
     <div id = "abox">
       <h1>Answer</h1>
-      <div id = "abox-user">User</div>
-      <div id = "abox-date">Date</div>
+      <div id = "abox-user">{{a.userName}}</div>
+      <div id = "abox-date">{{a.date}}</div>
       <br>
-      <p>Answer Goes Here!!!</p>
+      <p>{{a.Ans}}</p>
     </div>
-    
-    <div id = "abox">
-      <h1>Answer2</h1>
-      <div id = "abox-user">User</div>
-      <div id = "abox-date">Date</div>
-      <br>
-      <p>Answer2 Goes Here!!!</p>
-    </div>
+    {% endfor %}
     <div id = "abutton">
        <p>Do you know the answer? Answer it!! </p>
       <form name = "question" onsubmit="return validate()">
