@@ -79,6 +79,11 @@ class HelpPage(webapp.RequestHandler):
     def get(self):
         template_values = {}
         self.response.out.write(template.render('help.html',template_values))
+        
+class SearchResults(webapp.RequestHandler):
+    def get(self):
+        template_values = {}
+        self.response.out.write(template.render('sresults.html',template_values))
 
 class AnswerPage(webapp.RequestHandler):
     def get(self):
@@ -119,7 +124,8 @@ application = webapp.WSGIApplication(
                                      ('/qanda*', QnAPage),
                                      ('/submitAnswer*',AnswerSubmit),
                                      ('/submitQuestion', QuestionSubmit),
-                                     ('/help.html',HelpPage)
+                                     ('/help.html',HelpPage),
+                                     ('/sresults.html',SearchResults)
                                      ],
                         
                                      debug=True)
