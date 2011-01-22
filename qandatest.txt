@@ -114,9 +114,9 @@ function validate(){
       <form name = "answer" onsubmit="return validate()" method = "post" action = "/submitAnswer">
               
               Name: <input type="text" name="na" id="box-text2" value="">
-              <br><br>
+              <div style="clear: both;">&nbsp;</div>
               Email: <input type="text" name="ema" id="box-text2" value="">
-              <br><br>
+              <div style="clear: both;">&nbsp;</div>
               <textarea name="ans" id="abox-textarea" rows="10" cols="55"></textarea><img src = "image/abutton.png"></img>
               
               <div style="clear: both;">&nbsp;</div>

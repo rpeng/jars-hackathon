@@ -95,20 +95,14 @@ function validate(){
   <p><a href = "index.html">Home </a> > Q and A</p>
 
   <div id = "qbox">
-	  <h1>{{title}}</h1>
+	  <h1>Title</h1>
       <div id = "qbox-user">{{user}} ({{email}})</div>
       <div id = "qbox-date">{{date}}</div>
       <br>
       <p> {{question}} </p>
   </div>
-    {% for a in answers %}
-    <div id = "abox">
-      <h1>{{a.userName}}</h1>
-      <div id = "abox-date">{{a.date}}</div>
-      <br>
-      <p>{{a.Ans}}</p>
-    </div>
-    {% endfor %}
+
+
     <div id = "abutton">
        <p>Do you know the answer? Answer it!! </p>
       <form name = "answer" onsubmit="return validate()" method = "post" action = "/submitAnswer">
@@ -116,7 +110,7 @@ function validate(){
               Name: <input type="text" name="na" id="box-text2" value="">
               <br><br>
               Email: <input type="text" name="ema" id="box-text2" value="">
-              <br><br>
+              <br> <br>
               <textarea name="ans" id="abox-textarea" rows="10" cols="55"></textarea><img src = "image/abutton.png"></img>
               
               <div style="clear: both;">&nbsp;</div>
