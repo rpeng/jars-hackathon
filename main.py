@@ -8,6 +8,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext import db
 
 globalID = 1000
+currentQuestion = ""
 
 class UserIdentity:
     name = ""
@@ -28,8 +29,8 @@ class Answer(db.Model):
     userName = db.StringProperty()
     Ans = db.StringProperty(multiline=True)
     answerID = db.IntegerProperty()
-    tags = db.StringListProperty()
-    date = db.DateTimeProperty(auto_now_add=True)
+    email = db.StringProperty()
+    date = db.DateTimeProperty(auto_now=True)
     
 class MainPage(webapp.RequestHandler):
     questionID = 0
@@ -60,15 +61,16 @@ class AnswerSubmit(webapp.RequestHandler):
     
     def post(self):
         global globalID
-    
+        global currentQuestion
+        
         aData = Answer()
 
         aData.Ans = self.request.get('ans')
         aData.userName = self.request.get('na')
         aData.email = self.request.get('ema')
-        aData.answerID = self.request.query_string
+        aData.answerID = int(currentQuestion)
         
-        qData.put()
+        aData.put()
         self.redirect("/qanda?"+str(aData.answerID))
 
         
@@ -95,15 +97,19 @@ class AnswerPage(webapp.RequestHandler):
 
 class QnAPage(webapp.RequestHandler):
     def get(self):
+        global currentQuestion
         qId = self.request.query_string
+        currentQuestion = qId
         qs = db.GqlQuery("select * from Question where questionID = "+qId)
+        ans = db.GqlQuery("select * from Answer where answerID = "+qId)
         template_values = {
             'title':qs[0].Title,
             'question':qs[0].Ques,
             'user':qs[0].userName,
             'email':qs[0].email,
             'date':qs[0].date.strftime("%m/%d/%Y %H:%M"),
-            'id':qs[0].questionID
+            'id':str(qs[0].questionID),
+            'answers':ans
             }
         self.response.out.write(template.render('qanda.html',template_values))
 
@@ -116,7 +122,7 @@ application = webapp.WSGIApplication(
                                      ('/question.html', QuestionPage),
                                      ('/qanda*', QnAPage),
                                      ('/submitQuestion', QuestionSubmit),
-                                     ('/submitAnswer*',AnswerSubmit),
+                                     ('/submitAnswer',AnswerSubmit),
                                      ('/help.html',HelpPage)
                                      ],
                         
