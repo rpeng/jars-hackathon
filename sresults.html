@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Garden Of Orchids  
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20101115
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Q & A</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+
+<style type="text/css">
+
+
+</style>
+</head>
+<body>
+<script type="text/javascript">
+
+function validate(){
+  var x=document.forms["q"]["s"].value
+  if (x == ""){
+    alert ("You must fill in all of the required fields!")
+  return false;
+  }
+  else{
+    document.write(x);
+    return true;
+   }
+}
+
+</script>
+<div id ="wrapper">
+  <div id="header">
+      <div id="logo">
+       <a border="0" href = "index.html"> <img border = "0" src = "image/logos.png" ></img></a>
+
+      </div>
+    
+
+      <div id="search" >
+            <form name = "q" onsubmit="return validate()">
+      
+            <input type="text" name="s" id="search-text" value="" method="post">
+            <input type="submit" id="search-submit" value="SEARCH" />
+      
+            </form>
+            
+      </div>
+      
+  </div>
+</div>
+
+<div id = "page">
+  <div id="sidebar">
+					<ul>
+						<li>
+							<h2>Welcome to Q & A!</h2>
+							<p>Q & A is an question and answer app that is developed by jars(); To begin answering or asking questions
+							click on the thought bubbles</p>
+						</li>
+						<li>
+							<h2>Menu</h2>
+							<ul>
+                <li> <b> Score: 0 </b></li>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="question.html">Ask a Question</a></li>
+								<li><a href="alist.html">Question List</a></li>
+								<li><a href="help.html">Help</a></li>
+
+							</ul>
+						</li>
+
+
+					</ul>
+				</div>
+  <div id = "content">
+	  <p><a href = "index.html">Home</a> Question List</p>
+  <h1>Search Results:</h1>
+  <br>
+    <ul>
+	   				<li>result 1</li>
+	   				<li>result 2</li>
+							</ul>
+  
+  </div>
+  <div style="clear: both;">&nbsp;</div>
+			</div>
+</div>				
+	<!-- end #page -->
+<div id="footer">
+	<p>Copyright (c) 2011. All rights reserved. Design by jars();</a>.</p>
+</div>
+
+<!-- end #footer -->
+</body>
+</html>
