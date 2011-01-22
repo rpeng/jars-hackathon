@@ -24,7 +24,29 @@ Released   : 20101115
 </style>
 </head>
 <body>
+<script type="text/javascript">
 
+function validate(){
+  var x=document.forms["question"]["na"].value
+  var y = var x=document.forms["question"]["ema"].value
+  var z = document.forms["question"]["ans"].value
+  if (x == ""){
+    alert ("You must fill in your name!")
+  return false;
+  }
+  else if( y == ""){
+    alert ("You must fill in your email!")
+    return false;
+   }
+  else if (z ==""){
+    alert("You not fill in an answer");
+    return false;
+  }
+  else
+    return true;
+}
+
+</script>
 <div id ="wrapper">
   <div id="header">
       <div id="logo">
@@ -74,28 +96,27 @@ Released   : 20101115
 
   <div id = "qbox">
 	  <h1>{{title}}</h1>
-	  <div id = "qbox-user">{{user}}</div>
-	  <div id = "qbox-date">{{date}}</div>
+      <div id = "qbox-user">{{user}} ({{email}})</div>
+      <div id = "qbox-date">{{date}}</div>
       <br>
       <p> {{question}} </p>
   </div>
-
-  {% for a in answers %}
+    {% for a in answers %}
     <div id = "abox">
       <h1>Answer</h1>
-      <div id = "abox-user">{{ans.userName}} ({{ans.email}})</div>
-      <div id = "abox-date">{{ans.date}}</div>
+      <div id = "abox-user">{{a.userName}}</div>
+      <div id = "abox-date">{{a.date}}</div>
       <br>
-      <p>{{ans.Ans}}</p>
+      <p>{{a.Ans}}</p>
     </div>
-  {% endfor %}
+    {% endfor %}
     <div id = "abutton">
        <p>Do you know the answer? Answer it!! </p>
-       <form name = "question" action = "/submitAnswer?{{id}}" onsubmit="return validate()">
+      <form name = "answer" onsubmit="return validate()" method = "post" action = "/submitQuestion">
               
-              Name: <input type="text" name="na" id="box-text2" value="" method="post">
+              Name: <input type="text" name="na" id="box-text2" value="">
               <div style="clear: both;">&nbsp;</div>
-              Email: <input type="text" name="ema" id="box-text2" value="" method="post">
+              Email: <input type="text" name="ema" id="box-text2" value="">
               <div style="clear: both;">&nbsp;</div>
               <textarea name="ans" id="abox-textarea" rows="10" cols="55"></textarea><img src = "image/abutton.png"></img>
               
