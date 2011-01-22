@@ -94,7 +94,7 @@ function validate(){
       <div id = "qbox-user">User</div>
       <div id = "qbox-date">Date</div>
       <br>
-      <p>Question Goes Here!!!</p>
+      <p> question.Ques </p>
   </div>
   {% endfor %}
     <div id = "abox">
