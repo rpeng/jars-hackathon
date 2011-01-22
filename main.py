@@ -101,7 +101,7 @@ class QnAPage(webapp.RequestHandler):
             'question':qs[0].Ques,
             'user':qs[0].userName,
             'email':qs[0].email,
-            'date':qs[0].date.strftime("%m/%d/%Y %H:%M")
+            'date':qs[0].date.strftime("%m/%d/%Y %H:%M"),
             'id':qs[0].questionID
             }
         self.response.out.write(template.render('qanda.html',template_values))
