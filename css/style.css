@@ -239,6 +239,10 @@ a:hover {
   color:#696969;
 }
 
+#content a:hover{
+  text-decoration: underline;
+}
+
 .post {
 	margin-bottom: 15px;
 }
