@@ -1,6 +1,7 @@
 import os
 import datetime
 import string
+import random
 
 from google.appengine.api import users
 from google.appengine.ext import webapp
@@ -8,8 +9,7 @@ from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext import db
 
-globalID = 3000
-currentQuestion = ""
+globalID = 7000
 
 class Question(db.Model):
 
@@ -57,18 +57,16 @@ class QuestionSubmit(webapp.RequestHandler):
 class AnswerSubmit(webapp.RequestHandler):
     
     def post(self):
-        global globalID
-        global currentQuestion
         
         aData = Answer()
 
         aData.Ans = self.request.get('ans')
         aData.userName = self.request.get('na')
         aData.email = self.request.get('ema')
-        aData.answerID = int(currentQuestion)
+        aData.answerID = int(self.request.query_string)
         aData.put()
                 
-        self.redirect("/qanda?"+str(currentQuestion))
+        self.redirect("/qanda?"+str(aData.answerID))
 
         
 class QuestionPage(webapp.RequestHandler):
@@ -83,16 +81,31 @@ class HelpPage(webapp.RequestHandler):
         
 class SearchResults(webapp.RequestHandler):
     def post(self):
+	resultNum = 0
         search = self.request.get('s')
         results = db.GqlQuery("select * from Question")
         template_values = {}
         self.response.out.write(template.render('sresults.html',template_values))
+
+	for s in results:
+	    lstring = string.lower(s.Title)
+            l2string = string.lower(s.Ques)
+            rstring = string.lower(search)
+            if (lstring.find(rstring) >= 0) or (l2string.find(rstring) >= 0):
+                resultNum += 1
+		
+	if resultNum == 0:
+	    self.response.out.write("Sorry, no results were found.")
+	else:
+	    self.response.out.write("Results: "+str(resultNum))
+                                    
         for s in results:
             lstring = string.lower(s.Title)
             l2string = string.lower(s.Ques)
             rstring = string.lower(search)
             if (lstring.find(rstring) >= 0) or (l2string.find(rstring) >= 0):
-                self.response.out.write("<li><a href = \"/qanda?"+str(s.questionID)+"\">"+s.Title+"</a></li>")
+		resultNum += 1
+                self.response.out.write("<li><a href = \"/qanda?"+str(s.questionID)+"\">"+s.Title+" <i>("+s.Ques[0:20]+"...)</i></a></li>")
         self.response.out.write("""
   </div>
   <div style="clear: both;">&nbsp;</div>
@@ -122,7 +135,6 @@ class AnswerPage(webapp.RequestHandler):
 
 class QnAPage(webapp.RequestHandler):
     def get(self):
-        global currentQuestion
         qId = self.request.query_string
         currentQuestion = qId
         qs = db.GqlQuery("select * from Question where questionID = "+qId)
